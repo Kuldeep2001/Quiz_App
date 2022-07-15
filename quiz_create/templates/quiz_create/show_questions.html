@@ -1,0 +1,33 @@
+{% extends 'basic.html' %}
+
+{% block title %} Quiz-Home {% endblock %}
+
+{% block link_css %} {% endblock %}
+
+{% block css %} {% endblock %}
+
+{% block body %}
+    {% load static %}
+    <div class="container-fluid m-auto" style="width: 60%; background-color: aqua;">
+        <h1>Show Questions</h1>
+        {% for ques in questions %}
+            <div class="card" id="{{ ques.uid }}" style="width: 18rem;">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{ ques.question }}</h5>
+                    <p class="card-text">
+                        <h6>Options</h6>
+                        <ul>
+                            {% for option in ques.get_options %}
+                            <li>{{ option.answer }}</li>
+                            {% endfor %}
+                        </ul>
+                    </p>
+                    <a href="#" class="btn btn-primary">Select</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
+
+{% block js %} {% endblock %}
