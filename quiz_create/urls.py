@@ -5,4 +5,5 @@ urlpatterns = [
     path('',views.index, name='index'),
     path('add_questions/',views.add_questions, name='add_questions'),
     path('show_questions/',views.show_questions, name='show_questions'),
+    path('api/get_quiz',views.get_quiz, name='get_quiz'),
 ]

@@ -8,12 +8,13 @@
 
 {% block body %}
     {% load static %}
-    <div class="container-fluid m-auto" style="width: 60%; background-color: aqua;">
-        <h1>Show Questions</h1>
+    <h1>Questions :</h1>
+    <div class="container-lg d-flex flex-column" style="width: 80%;">
+        <h4 class="text-center">Show Questions</h4>
         {% for ques in questions %}
-            <div class="card" id="{{ ques.uid }}" style="width: 18rem;">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
+            <div class="d-flex justify-content-center" id="{{ ques.uid }}" style="width:70%">
+                <img src="/media/{{ ques.image }}" class="card-img-top rounded" alt="here is the img">
+                <div class="container-lg">
                     <h5 class="card-title">{{ ques.question }}</h5>
                     <p class="card-text">
                         <h6>Options</h6>
