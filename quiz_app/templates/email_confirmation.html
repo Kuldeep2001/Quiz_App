@@ -1,0 +1,10 @@
+{% autoescape off %}
+
+Welcome to Quiz-App
+
+Hello {{ name }}
+
+Please confirm your account by clicking the confirmation link below.
+
+Confirmation link: http://{{ domain }}{% url 'activate' uidb64=uid token=token %}
+{% endautoescape %}

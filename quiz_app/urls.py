@@ -24,7 +24,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.index, name='index'),
     path('about',views.about, name='about'),
-    path('users/',include('users.urls')),
-    path('q_bank/',include('q_bank.urls')),
+    path('authenticate/',include('authentication.urls')),
     path('quiz_create/',include('quiz_create.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,0 +1,68 @@
+{% extends 'basic.html' %}
+
+{% block title %} Quiz-Home {% endblock %}
+
+{% block link_css %}
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.2.0/css/all.css'>
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css'>
+    {% load static %}
+    <link rel="stylesheet" href="{% static '/authentication/css/register.css' %}">
+{% endblock %}
+
+{% block css %} {% endblock %}
+
+{% block body %}
+    <div class="container py-5">
+        <div class="screen">
+            <div class="screen__content">
+                <form class="login"action ="/authenticate/register/" method = "POST">{% csrf_token%}
+                    <div class="login__field">
+                        <i class="login__icon fas fa-user"></i>
+                        <input required type="text" class="login__input" placeholder="First name" name = "fname">
+                    </div>
+                    <div class="login__field">
+                        <i class="login__icon fas fa-user"></i>
+                        <input required type="text" class="login__input" placeholder="Last name" name = "lname">
+                    </div>
+                    
+                    <div class="login__field">
+                        <i class="login__icon fa fa-envelope"></i>
+                        <input required type="email" class="login__input" placeholder="Email" name = "email">
+                    </div>
+                    <div class="login__field">
+                        <i class="login__icon fas fa-user"></i>
+                        <input required type="text" class="login__input" placeholder="User name" name = "username">
+                    </div>
+                    <div class="login__field">
+                        <i class="login__icon fas fa-lock"></i>
+                        <input required type="password" class="login__input" placeholder="Password" name = "password1">
+                    </div>
+                    <div class="login__field">
+                        <i class="login__icon fas fa-lock"></i>
+                        <input required type="password" class="login__input" placeholder="Confirm Password" name = "password2">
+                    </div>
+                    <button type="submit" class="button login__submit">
+                        <span class="button__text">Register Now</span>
+                        <i class="button__icon fas fa-chevron-right"></i>
+                    </button>
+                </form>
+                <!-- <div class="social-login">
+                    <h3>log in via</h3>
+                    <div class="social-icons">
+                        <a href="#" class="social-login__icon fab fa-instagram"></a> 
+                        <a href="#" class="social-login__icon fab fa-facebook"></a>
+                        <a href="#" class="social-login__icon fab fa-google"></a>
+                    </div>
+                </div> -->
+            </div>
+            <div class="screen__background">
+                <span class="screen__background__shape screen__background__shape4"></span>
+                <span class="screen__background__shape screen__background__shape3"></span>		
+                <span class="screen__background__shape screen__background__shape2"></span>
+                <span class="screen__background__shape screen__background__shape1"></span>
+            </div>		
+        </div>
+    </div>
+{% endblock %}
+
+{% block js %} {% endblock %}

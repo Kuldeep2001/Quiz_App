@@ -21,7 +21,7 @@ class Category(BaseModel):
 class Question(BaseModel):
     category = models.ForeignKey(Category, related_name='category', on_delete=models.CASCADE)
     question = models.CharField(max_length=100)
-    image = models.ImageField(upload_to = 'quiz_create/images', default="")
+    image = models.ImageField(upload_to = 'quiz_create/images', null=True, blank=True, default="")
     marks = models.IntegerField(default=4)
 
     def __str__(self):

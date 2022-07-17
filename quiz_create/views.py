@@ -1,6 +1,7 @@
 from django.http import HttpResponse, JsonResponse
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from .models import Question
+from django.contrib import messages
 import random
 
 def index(request):
@@ -10,6 +11,9 @@ def add_questions(request):
     return render(request, 'quiz_create/add_question.html')
 
 def show_questions(request):
+    if not request.user.is_authenticated:
+        messages.error(request, 'You are not allowed to access this page')
+        return redirect('/')
     ques = Question.objects.all()
 
     params = {
