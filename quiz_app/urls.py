@@ -26,4 +26,5 @@ urlpatterns = [
     path('about',views.about, name='about'),
     path('authenticate/',include('authentication.urls')),
     path('quiz_create/',include('quiz_create.urls')),
+    path('quiz_interface/',include('quiz_interface.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

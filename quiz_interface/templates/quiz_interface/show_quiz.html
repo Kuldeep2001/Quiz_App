@@ -1,0 +1,41 @@
+{% extends 'quiz_interface/basic.html' %}
+
+{% block title %} Quiz-Home {% endblock %}
+
+{% block link_css %} {% endblock %}
+
+{% block css %}
+    .options{
+        list-style-type: lower-alpha;
+    }
+{% endblock %}
+
+{% block body %}
+    {% load static %}
+    <h1>Questions :</h1>
+    <div class="container-lg d-flex flex-column" style="width: 80%;">
+        <h4 class="text-center">Show Questions</h4>
+        <div class="row">
+            {% for qz in quiz %}
+                {% ques = qz.question %}
+                <div class="card justify-content-center col-3 mx-2 p-0" id="{{ ques.uid }}" style="font-size: 0.75rem;">
+                    {% if ques.image %}
+                        <img src="/media/{{ ques.image }}" class="card-img-top m-0" style="height: 80px;" alt="here is the img">
+                    {% endif %}
+                    <div class="card-body">
+                        <h6 class="card-title">{{ ques.question }}</h6>
+                        <p class="card-text mx-0">
+                            <ul>
+                                {% for option in ques.get_option %}
+                                <li class="options">{{ option.answer }}</li>
+                                {% endfor %}
+                            </ul>
+                        </p>
+                        <input type="checkbox" id="{{ ques.uid }}" checked class="question_checkbox">
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
+{% block js %} {% endblock %}

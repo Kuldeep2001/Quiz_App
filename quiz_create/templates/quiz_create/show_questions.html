@@ -1,4 +1,4 @@
-{% extends 'basic.html' %}
+{% extends 'quiz_create/basic.html' %}
 
 {% block title %} Quiz-Home {% endblock %}
 
@@ -15,8 +15,10 @@
     <h1>Questions :</h1>
     <div class="container-lg d-flex flex-column" style="width: 80%;">
         <h4 class="text-center">Show Questions</h4>
+        {% for category in categories %}
+        <h2>{{ category }}</h2>
         <div class="row">
-            {% for ques in questions %}
+            {% for ques in category.get_questions %}
                 <div class="card justify-content-center col-3 mx-2 p-0" id="{{ ques.uid }}" style="font-size: 0.75rem;">
                     {% if ques.image %}
                         <img src="/media/{{ ques.image }}" class="card-img-top m-0" style="height: 80px;" alt="here is the img">
@@ -30,12 +32,42 @@
                                 {% endfor %}
                             </ul>
                         </p>
-                        <a href="#" class="btn btn-primary">Select</a>
+                        <input type="checkbox" id="{{ ques.uid }}" class="question_checkbox">
+                        <button id="" class="btn btn-primary question">Select</button>
+                        <div class="question_err" style="color: red;"></div>
                     </div>
                 </div>
             {% endfor %}
         </div>
+        {% endfor %}
     </div>
 {% endblock %}
 
-{% block js %} {% endblock %}
+{% block js %}
+    <script>
+        console.log('Script working');
+        if(localStorage.getItem('quiz') == null){
+            var quiz = {};
+        }
+        else{
+            localStorage.removeItem('quiz');
+            var quiz = {};
+        }
+        console.log(typeof(quiz));
+        document.getElementById('questions_no').innerHTML = Object.keys(quiz).length;
+
+        var num = 0;
+        $('.question_checkbox').click(function(){
+            var idstr = this.id.toString();
+            if(this.checked){
+                quiz[idstr] = 1;
+            }
+            else
+                delete(quiz[idstr]);
+
+            console.log(quiz);
+            localStorage.setItem('quiz',JSON.stringify(quiz));
+            document.getElementById('questions_no').innerHTML = Object.keys(quiz).length;
+        });
+    </script>
+{% endblock %}

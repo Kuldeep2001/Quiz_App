@@ -13,3 +13,12 @@ class QuestionAdmin(admin.ModelAdmin):
 
 admin.site.register(Question , QuestionAdmin)
 admin.site.register(Answer)
+
+admin.site.register(Quiz_Questions)
+class Quiz_QuestionsAdmin(admin.StackedInline):
+    model = Quiz_Questions
+
+class QuizAdmin(admin.ModelAdmin):
+    inlines = [Quiz_QuestionsAdmin]
+
+admin.site.register(Quiz , QuizAdmin)
